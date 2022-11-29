@@ -238,3 +238,84 @@ console.group('https://edabit.com/challenge/9MjEpkL7yAjAqiH58');
   console.log(result);
 }
 console.groupEnd();
+
+console.group('https://edabit.com/challenge/4iCsexZgmDEMMxj46');
+{
+  function printArray(number) {
+    const newArray = [];
+
+    for (let i = 1; i <= number; i++) {
+      newArray.push(i);
+    }
+    return newArray;
+  }
+  const result = printArray(6);
+  console.log(result);
+}
+console.groupEnd();
+
+console.group('https://edabit.com/challenge/CCGBig9eRPFzAHv46');
+{
+  function swap(a, b) {
+    b[1] = b[0]
+    a[0] = a[1]
+    return [b, a]
+  }
+  const result = swap(100, 200);
+  console.log(result);
+}
+console.groupEnd();
+
+console.group('https://edabit.com/challenge/8Qg78sf5SNDEANKti');
+{
+  function animals(chickens, cows, pigs) {
+    let chikenLegs = chickens * 2;
+    let cowsLegs = cows * 4;
+    let pigsLegs = pigs * 4;
+    return chikenLegs + cowsLegs + pigsLegs;
+  }
+  const result = animals(2, 3, 5);
+  console.log(result);
+}
+console.groupEnd();
+
+console.group('https://edabit.com/challenge/vJCZmgvvDjehyDcDK');
+{
+  function and(a, b) {
+    return (a && b);
+  }
+  const result = and(true, true);
+  console.log(result);
+}
+console.groupEnd();
+
+console.group('https://edabit.com/challenge/GwvwXHWCThHZrR7xu');
+{
+  function footballPoints(wins, draws, losses) {
+    let scoreWins = wins * 3;
+    let scoreDraws = draws * 1;
+    let scoreLosses = losses * 0;
+    if ((wins >= 0) && (draws >= 0) && (losses >= 0)) {
+      return scoreWins + scoreDraws + scoreLosses;
+    } else {
+      return 'Numbers can be 0 to positive';
+    }
+  }
+  const result = footballPoints(0, 0, 1);
+  console.log(result);
+}
+console.groupEnd();
+
+console.group('https://edabit.com/challenge/JesaFi5ntBEbGT8bu');
+{
+  function convert(hours, minutes) {
+    let minute = 60;
+    let sec = minute;
+    let hoursInSec = hours * minute * sec;
+    let minuteInSec = minutes * sec;
+    return hoursInSec + minuteInSec;
+  }
+  const result = convert(2, 0);
+  console.log(result);
+}
+console.groupEnd();
