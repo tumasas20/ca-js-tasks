@@ -51,7 +51,7 @@ class Automobilis {
 }
 
 const car1 = new Automobilis('Vw', 'Passat CC', 15000);
-const car2 = new Automobilis('Audi', 'A6 avant', 13000);
+const car2 = new Automobilis('Audi', 'A6 avant', 13500);
 const car3 = new Automobilis('MB', 'CLS', 12000);
 
 console.log(car1, car2, car3);
