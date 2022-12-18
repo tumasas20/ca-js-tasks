@@ -25,19 +25,19 @@ console.groupCollapsed('1. - https://edabit.com/challenge/ZngT4zDckDugt2JGY');
   const player2 = new Player('Jimmy Garoppolo', 28, 188, 102)
   const player3 = new Player('Julio Jones', 31, 191, 100)
 
+  console.log('------');
   console.log(player1.getAge());
   console.log(player1.getHeight());
   console.log(player1.getWeight());
-
+  console.log('------');
   console.log(player2.getAge());
   console.log(player2.getHeight());
   console.log(player2.getWeight());
-
+  console.log('------');
   console.log(player3.getAge());
   console.log(player3.getHeight());
   console.log(player3.getWeight());
-
-
+  console.log('------');
 }
 console.groupEnd();
 
@@ -75,9 +75,9 @@ console.groupCollapsed('3. - https://edabit.com/challenge/kGLhgwGaLJsCMS7wS');
 {
   class Employee {
     constructor(firstname, lastname) {
-      this.firstname = firstname
-      this.lastname = lastname
-      this.fullName = `${firstname}, ${lastname}`; //!issiaiskinti
+      this.firstname = firstname;
+      this.lastname = lastname;
+      this.fullname = firstname + ' ' + lastname;
       this.email = `${firstname}.${lastname}@company.com`.toLowerCase();
     }
   }
@@ -87,23 +87,27 @@ console.groupCollapsed('3. - https://edabit.com/challenge/kGLhgwGaLJsCMS7wS');
   const emp3 = new Employee("Antony", "Walker");
   const emp4 = new Employee("Joshua", "Senoron");
 
-  console.log(emp1.firstname, "John");
-  console.log(emp1.lastname, "Smith");
-  console.log(emp1.fullname, "John Smith");
-  console.log(emp1.email, "john.smith@company.com");
-  console.log(emp2.firstname, "Mary");
-  console.log(emp2.lastname, "Sue");
-  console.log(emp2.fullname, "Mary Sue");
-  console.log(emp2.email, "mary.sue@company.com");
-  console.log(emp3.firstname, "Antony");
-  console.log(emp3.lastname, "Walker");
-  console.log(emp3.fullname, "Antony Walker");
-  console.log(emp3.email, "antony.walker@company.com");
-  console.log(emp4.firstname, "Joshua");
-  console.log(emp4.lastname, "Senoron");
-  console.log(emp4.fullname, "Joshua Senoron");
-  console.log(emp4.email, "joshua.senoron@company.com");
-
+  console.log('------');
+  console.log(emp1.firstname);
+  console.log(emp1.lastname);
+  console.log(emp1.fullname);
+  console.log(emp1.email);
+  console.log('------');
+  console.log(emp2.firstname);
+  console.log(emp2.lastname);
+  console.log(emp2.fullname);
+  console.log(emp2.email);
+  console.log('------');
+  console.log(emp3.firstname);
+  console.log(emp3.lastname);
+  console.log(emp3.fullname);
+  console.log(emp3.email);
+  console.log('------');
+  console.log(emp4.firstname);
+  console.log(emp4.lastname);
+  console.log(emp4.fullname);
+  console.log(emp4.email);
+  console.log('------');
 
 }
 console.groupEnd();
@@ -198,50 +202,149 @@ console.groupCollapsed('6. - https://edabit.com/challenge/qNMtrtizgssAQqP2b');
   }
 
   const a1 = new Name("john", "SMITH");
+  console.log('------');
   console.log(a1.fname);
   console.log(a1.lname);
   console.log(a1.fullname);
   console.log(a1.initials);
-
+  console.log('------');
   const a2 = new Name("sARah", "fRolliE");
   console.log(a2.fname);
   console.log(a2.lname);
   console.log(a2.fullname);
   console.log(a2.initials);
+  console.log('------');
 }
 console.groupEnd();
 
 console.groupCollapsed('7. - https://edabit.com/challenge/HKmJFmZZCX53ff4ke');
 {
-  function sweetestIcecream(arr) {
-    const flavors = 
-        {'Plain': 0,
-         'Vanilla': 5,
-         'ChocolateChip': 5,
-         'Strawberry': 10,
-         'Chocolate': 10
-        };
-  const sweetestIcecream = arr => 
-  Math.max(...arr.map(a => flavors[a.flavor] + a.numSprinkles))
+  const sweetestIcecream = a => Math.max(...a.map(x => (
+    { n: 0, a: 5, p: 5, y: 10, e: 10 }[x.flavor.slice(-1)] + x.numSprinkles
+  )));
+
+  class IceCream {
+    constructor(flavor, numSprinkles) {
+      this.flavor = flavor
+      this.numSprinkles = numSprinkles
+    }
   }
+  const ice1 = new IceCream("Chocolate", 13);
+  const ice2 = new IceCream("Vanilla", 0);
+  const ice3 = new IceCream("Strawberry", 7);
+  const ice4 = new IceCream("Plain", 18);
+  const ice5 = new IceCream("ChocolateChip", 3);
+
+  console.log(sweetestIcecream([ice1, ice2, ice3, ice4, ice5]));
+  console.log(sweetestIcecream([ice1, ice3]));
+  console.log(sweetestIcecream([ice3, ice5]));
 
 }
 console.groupEnd();
 
 console.groupCollapsed('8. - https://edabit.com/challenge/9zwdrfW99zmdRhibi');
 {
-  // ... code
+  class OnesThreesNines {
+    constructor(num) {
+      this.num = num;
+    }
+    get ones() {
+      return this.num / 1;
+    }
+    get threes() {
+      return Math.floor(this.num / 3);
+    }
+    get nines() {
+      return Math.floor(this.num / 9);
+    }
+  }
+
+  const probs = [
+    {
+      num: 5,
+      which: 'nines',
+    }, {
+      num: 5,
+      which: 'ones'
+    }, {
+      num: 5,
+      which: 'threes'
+    }];
+
+  probs.forEach(prob => {
+    let testInstance = new OnesThreesNines(prob.num);
+    console.log(testInstance[prob.which])
+  });
 }
 console.groupEnd();
 
 console.groupCollapsed('9. - https://edabit.com/challenge/7PA4jhWqDYJT4ixLp');
 {
-  // ... code
+  class User {
+    static userCount = 0;
+    constructor(username) {
+      this.username = username;
+      User.userCount++;
+    }
+  }
+  console.log(User.userCount);
+
+  const u1 = new User('johnsmith10', 1);
+  console.log(User.userCount);
+  console.log(u1.username);
+
+  const u2 = new User('marysue', 2);
+  console.log(User.userCount);
+  console.log(u2.username);
+
+  const u3 = new User('mailan_rodrick', 3);
+  console.log(User.userCount);
+  console.log(u2.username);
 }
 console.groupEnd();
 
 console.groupCollapsed('10. - https://edabit.com/challenge/s5Sz2ovKsvtGxNGgn');
 {
-  // ... code
+  class Book {
+    constructor(title, author) {
+      this.title = title;
+      this.author = author;
+    }
+
+    getTitle() {
+      return `Title: ${this.title}`;
+    }
+
+    getAuthor() {
+      return `Author: ${this.author}`;
+    }
+  }
+
+  const PP = new Book('Pride and Prejudice', 'Jane Austen');
+  const H = new Book('Hamlet', 'William Shakespeare');
+  const WP = new Book('War and Peace', 'Leo Tolstoy');
+  const HP = new Book('Harry Potter', 'J.K. Rowling');
+
+  console.log('-----');
+  console.log(PP.title);
+  console.log(PP.author);
+  console.log(PP.getTitle());
+  console.log(PP.getAuthor());
+  console.log('-----');
+  console.log(H.title);
+  console.log(H.author);
+  console.log(H.getTitle());
+  console.log(H.getAuthor());
+  console.log('-----');
+  console.log(WP.title);
+  console.log(WP.author);
+  console.log(WP.getTitle());
+  console.log(WP.getAuthor());
+  console.log('-----');
+  console.log(HP.title);
+  console.log(HP.author);
+  console.log(HP.getTitle());
+  console.log(HP.getAuthor());
+  console.log('-----');
 }
 console.groupEnd();
