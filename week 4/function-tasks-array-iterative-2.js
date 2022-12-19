@@ -203,65 +203,101 @@ console.groupEnd();
 
 console.groupCollapsed('1. Atspausdinti visus Informatikos fakulteto studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const studentOfIf = students.filter(x => x.faculty === 'Informatikos fakultetas');
+  console.log(studentOfIf);
+
 }
 console.groupEnd();
 
 console.groupCollapsed('2. Atspausdinti visus Chemijos fakulteto studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const chFakultetStudent = students.filter(x => x.faculty === 'Chemijos fakultetas');
+  console.log(chFakultetStudent);
 }
 console.groupEnd();
 
 console.groupCollapsed('3. Atspausdinti visus Elektros ir elektronikos fakulteto studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const allEestudents = students.filter(x => x.faculty === 'Elektros ir elektronikos fakultetas');
+  console.log(allEestudents);
 }
 console.groupEnd();
 
 console.groupCollapsed('4. Atspausdinti tik pirmo kurso studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const firstCurseStudent = students.filter(x => x.course === 1);
+  console.log(firstCurseStudent);
 }
 console.groupEnd();
 
 console.groupCollapsed('5. Atspausdinti tik antro kurso studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const secondCoursestudents = students.filter(x => x.course === 2);
+  console.log(secondCoursestudents);
 }
 console.groupEnd();
 
 console.groupCollapsed('6. Atspausdinti tik trečio kurso studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const thirdCourseStudents = students.filter(x => x.course === 3);
+  console.log(thirdCourseStudents);
 }
 console.groupEnd();
 
 console.groupCollapsed('7. Atspausdinti tik ketvirto kurso studentus');
 {
-  // ... sprendimas ir spausdinimas
+  const fourCourseStudent = students.filter(x => x.course === 4);
+  console.log(fourCourseStudent);
 }
 console.groupEnd();
 
 console.groupCollapsed('8. Iš students masyvo atrinkti ir atspausdinti visų studentų vidurkius');
 {
-  // ... sprendimas ir spausdinimas
+  function countSemesterCredits(modules) {
+    let sum = 0;
+    modules.forEach(module => sum += module.credits);
+    return sum;
+  }
+  function calcModuleAvg(module) {
+    let sum = 0;
+    module.marks.forEach(mark => sum += mark);
+    return Math.round(sum / module.marks.length);
+  }
+
+  function studentSemesterAverage(student) {
+    const semesterCredits = countSemesterCredits(student.modules);
+    let semesterAvgWeight = 0;
+    student.modules.forEach(module => {
+      const semesterAvgWeightComponent = calcModuleAvg(module) * module.credits;
+      semesterAvgWeight += semesterAvgWeightComponent;
+    });
+    return semesterAvgWeight / semesterCredits;
+  }
+
+  const studentAverage = students.map(student => {return studentSemesterAverage(student)});
+  console.log(studentAverage);
 }
 
 console.groupCollapsed('9. Atspausdinti visų Informatikos fakulteto studentų vidurkius');
 {
-  // ... sprendimas ir spausdinimas
+  const studentsOfInformaticFaculty = students.filter(x => x.faculty === 'Informatikos fakultetas');
+  const studentsOfIfAvg = studentsOfInformaticFaculty.map(student => {return studentSemesterAverage(student)});
+  console.log(studentsOfIfAvg);
 }
 console.groupEnd();
 
 console.groupCollapsed('10. Atspausdinti visų Chemijos fakulteto studentų vidurkius');
 {
-  // ... sprendimas ir spausdinimas
+  const chFacultyStudents = students.filter(x => x.faculty === 'Chemijos fakultetas');
+  const chFacultyAvg = chFacultyStudents.map(student => {return studentSemesterAverage(student)});
+  console.log(chFacultyAvg);
 }
 console.groupEnd();
 
 console.groupCollapsed('11. Atspausdinti visų Elektros ir elektronikos fakulteto studentų vidurkius');
 {
-  // ... sprendimas ir spausdinimas
+  const eElFacultyStudents = students.filter(x => x.faculty === 'Elektros ir elektronikos fakultetas');
+  const eElFacultyAvg = eElFacultyStudents.map(student => {return studentSemesterAverage(student)});
+  console.log(eElFacultyAvg);
 }
 console.groupEnd();
